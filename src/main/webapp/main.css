@@ -1,0 +1,108 @@
+/* --- PHẦN CHUNG (GIỮ NGUYÊN TỪ TRANG TRƯỚC) --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+}
+
+/* --- PHẦN MỚI CHO TRANG DOWNLOAD --- */
+
+/* Styling cho tên Album (h2) */
+h2 {
+    font-size: 1.4rem;
+    color: #555;
+    font-weight: 600;
+    margin-bottom: 25px;
+    text-align: center;
+    opacity: 0.9;
+}
+
+/* Styling cho Bảng (Table) - Biến bảng thành một Card lớn */
+table {
+    width: 100%;
+    max-width: 700px; /* Rộng hơn một chút so với trang trước để chứa bảng */
+    border-collapse: collapse; /* Loại bỏ khoảng cách giữa các ô */
+    background-color: #ffffff;
+    border-radius: 12px; /* Bo tròn 4 góc bảng */
+    overflow: hidden; /* Để nội dung không bị tràn ra khỏi góc bo tròn */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05); /* Đổ bóng */
+    margin-bottom: 30px;
+}
+
+/* Styling cho Tiêu đề cột (th) */
+th {
+    background-color: #3498db; /* Màu xanh chủ đạo */
+    color: white;
+    text-align: left;
+    padding: 18px 25px;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+
+/* Styling cho Ô dữ liệu (td) */
+td {
+    padding: 15px 25px;
+    border-bottom: 1px solid #eee; /* Đường kẻ mờ giữa các dòng */
+    color: #444;
+    vertical-align: middle;
+}
+
+/* Hiệu ứng khi di chuột vào từng dòng nhạc */
+tr:hover td {
+    background-color: #f8fbff; /* Nền chuyển xanh rất nhạt */
+}
+
+/* Xóa đường kẻ ở dòng cuối cùng cho đẹp */
+tr:last-child td {
+    border-bottom: none;
+}
+
+/* --- Styling cho Link Download (Nút MP3) --- */
+td a {
+    display: inline-block;
+    text-decoration: none;
+    background-color: #eaf6ff; /* Nền xanh nhạt */
+    color: #3498db; /* Chữ xanh đậm */
+    padding: 8px 18px;
+    border-radius: 20px; /* Bo tròn hình viên thuốc */
+    font-weight: 700;
+    font-size: 0.85rem;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+/* Hiệu ứng hover vào nút download */
+td a:hover {
+    background-color: #3498db;
+    color: white;
+    transform: translateY(-2px); /* Nút nảy lên nhẹ */
+    box-shadow: 0 4px 8px rgba(52, 152, 219, 0.3); /* Bóng xanh */
+}
+
+/* Thêm icon mũi tên tải xuống bằng CSS giả */
+td a::after {
+    content: " \2193"; /* Mã Unicode mũi tên xuống */
+    font-size: 1.1em;
+    margin-left: 5px;
+    display: inline-block;
+}

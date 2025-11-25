@@ -1,0 +1,78 @@
+/* 1. Cấu hình chung cho toàn trang */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font chữ hiện đại */
+    background-color: #f0f2f5; /* Màu nền xám nhẹ dịu mắt */
+    color: #333;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Căn giữa nội dung */
+    min-height: 100vh;
+}
+
+/* 2. Styling cho tiêu đề */
+h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    border-bottom: 3px solid #3498db; /* Đường gạch chân trang trí */
+    padding-bottom: 10px;
+}
+
+/* 3. Styling cho container (thẻ p chứa các link) */
+/* Lưu ý: Vì HTML dùng thẻ <p>, ta biến nó thành hộp chứa có giới hạn chiều rộng */
+p {
+    width: 100%;
+    max-width: 600px; /* Giới hạn chiều rộng để trông gọn gàng */
+    background: transparent;
+}
+
+/* 4. Styling cho các liên kết (Album) */
+a {
+    display: block; /* Biến thẻ a thành khối để chiếm hết chiều ngang */
+    background-color: #ffffff;
+    color: #444;
+    text-decoration: none; /* Bỏ gạch chân mặc định */
+    padding: 20px;
+    margin-bottom: 15px; /* Khoảng cách giữa các thẻ */
+    border-radius: 12px; /* Bo tròn góc */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Đổ bóng nhẹ */
+    transition: all 0.3s ease; /* Hiệu ứng chuyển động mượt mà */
+    font-weight: 600;
+    font-size: 1.1rem;
+    position: relative;
+    border-left: 5px solid transparent; /* Đường viền ẩn bên trái */
+    overflow: hidden;
+}
+
+/* Thêm icon nốt nhạc bằng CSS giả (pseudo-element) */
+a::before {
+    content: "\266B"; /* Mã Unicode hình nốt nhạc */
+    margin-right: 15px;
+    font-size: 1.4em;
+    color: #3498db;
+    vertical-align: middle;
+}
+
+/* 5. Hiệu ứng khi di chuột vào (Hover) */
+a:hover {
+    transform: translateY(-5px); /* Nhấc thẻ lên một chút */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Bóng đổ đậm hơn */
+    border-left: 5px solid #3498db; /* Hiện đường viền màu xanh */
+    color: #2980b9;
+}
+
+/* Hiệu ứng Active (khi click) */
+a:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Ẩn thẻ <br> đi vì chúng ta đã dùng display: block cho thẻ <a> */
+br {
+    display: none;
+}

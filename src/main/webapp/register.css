@@ -1,0 +1,128 @@
+/* --- PHẦN CHUNG (GIỮ NGUYÊN) --- */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    margin: 0;
+    padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+}
+
+h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px; /* Giảm margin một chút để gần đoạn mô tả hơn */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    border-bottom: 3px solid #3498db;
+    padding-bottom: 10px;
+}
+
+/* --- PHẦN MỚI CHO FORM ĐĂNG KÝ --- */
+
+/* 1. Styling cho đoạn văn hướng dẫn (p) */
+p {
+    text-align: center;
+    color: #666;
+    font-size: 1rem;
+    margin-bottom: 30px;
+    max-width: 500px;
+    line-height: 1.5;
+}
+
+/* 2. Khung Form (Card) */
+form {
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 450px; /* Độ rộng tối ưu cho form đăng ký */
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08); /* Bóng đổ mềm mại */
+    box-sizing: border-box; /* Để padding không làm vỡ khung */
+}
+
+/* 3. Styling cho Label (Nhãn) */
+label {
+    display: block; /* Đưa label lên dòng riêng biệt (trên đầu input) */
+    font-weight: 600;
+    color: #444;
+    margin-bottom: 8px;
+    margin-top: 5px;
+    font-size: 0.95rem;
+}
+
+/* Ẩn nhãn rỗng (dòng &nbsp; trước nút submit trong HTML cũ) */
+label:empty, label:contains("&nbsp;") {
+    display: none;
+}
+/* Hoặc dùng cách này an toàn hơn cho HTML của bạn: */
+form label:nth-last-of-type(1) {
+    display: none; /* Ẩn label cuối cùng chứa khoảng trắng thừa */
+}
+
+/* 4. Styling cho Input (Ô nhập liệu) */
+input[type="text"],
+input[type="email"] {
+    width: 100%; /* Chiếm hết chiều ngang form */
+    padding: 12px 15px;
+    margin-bottom: 20px; /* Khoảng cách giữa các ô */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    color: #333;
+    background-color: #fafafa;
+    box-sizing: border-box; /* Tính padding vào trong độ rộng */
+    transition: all 0.3s ease;
+}
+
+/* Hiệu ứng khi click vào ô nhập liệu (Focus) */
+input[type="text"]:focus,
+input[type="email"]:focus {
+    background-color: #fff;
+    border-color: #3498db; /* Viền chuyển màu xanh */
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2); /* Hiệu ứng glow xanh nhạt */
+}
+
+/* 5. Styling cho nút Submit (Register) */
+input[type="submit"] {
+    width: 100%; /* Nút bấm to, full chiều ngang */
+    background-color: #3498db;
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s;
+    margin-top: 10px;
+}
+
+/* Hiệu ứng hover nút Submit */
+input[type="submit"]:hover {
+    background-color: #2980b9; /* Xanh đậm hơn */
+    transform: translateY(-2px); /* Nút nổi lên nhẹ */
+}
+
+input[type="submit"]:active {
+    transform: translateY(0);
+}
+
+/* 6. Xử lý các thẻ thừa trong HTML gốc */
+/* Ẩn thẻ <br> vì ta đã dùng layout block đẹp hơn */
+form br {
+    display: none;
+}
+
+/* Ghi đè class cũ trong HTML nếu cần (reset margin thừa) */
+.margin_left {
+    margin-left: 0 !important;
+}
+.pad_top {
+    /* CSS của label đã xử lý khoảng cách rồi nên class này có thể bỏ qua */
+}
