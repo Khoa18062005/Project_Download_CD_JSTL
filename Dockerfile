@@ -7,7 +7,7 @@ FROM maven:3.8.1-ibmjava-8 AS builder
 WORKDIR /Project_01_SendEmail
 
 # Copy toàn bộ project vào container
-COPY . .
+COPY src .
 
 # Build project Maven (tạo file WAR)
 RUN mvn clean package -DskipTests
