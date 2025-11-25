@@ -1,30 +1,27 @@
-# ============================
-# Stage 1: Build Maven project
-# ============================
-FROM maven:3.8.1-ibmjava-8 AS builder
+# Stage 1: Build the app using Maven (this creates the WAR file)
+FROM maven:3.8.1-openjdk-17-slim AS builder
 
-# Đặt thư mục làm việc trong container
-WORKDIR /Project_01_SendEmail
+# Set the working directory inside the container for the build
+WORKDIR /app
 
-# Copy toàn bộ project vào container
-COPY src .
+# Copy all your project files (pom.xml, src, etc.) into the container
+COPY . .
 
-# Build project Maven (tạo file WAR)
+# Run Maven to clean and build the WAR file (skip tests to speed up)
 RUN mvn clean package -DskipTests
 
-# ============================
-# Stage 2: Deploy với Tomcat
-# ============================
-FROM tomcat:9.0.85-jdk17-corretto
+# Stage 2: Runtime environment with Tomcat (smaller image, no build tools)
+FROM tomcat:9.0-jdk17-corretto
 
-# Xóa webapp mặc định của Tomcat
-RUN rm -rf /usr/local/tomcat/webapps/*  # xóa mặc định của tomcat
+# Remove Tomcat's default webapps to avoid conflicts
+RUN rm -rf /usr/local/tomcat/webapps/*
 
-# Copy file WAR từ giai đoạn build sang Tomcat
-COPY --from=builder /Project_CD_download/target/Project_CD_download.war /usr/local/tomcat/webapps/ROOT.war
+# Copy the built WAR file from Stage 1 into Tomcat's webapps folder
+# Adjust the WAR name if your pom.xml uses a different artifactId/version
+COPY --from=builder /app/target/Project_CD_download.war /usr/local/tomcat/webapps/ROOT.war
 
-# Mở port 8080 (Render sẽ dùng port này)
+# Expose port 8080 (Tomcat's default port for HTTP)
 EXPOSE 8080
-
-# Lệnh khởi chạy Tomcat
+#
+# Command to start Tomcat when the container runs
 CMD ["catalina.sh", "run"]
